@@ -203,7 +203,9 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <div class="card">
 <label for="nm">الاسم</label><input id="nm" autocomplete="name">
 <label for="ph">رقم الموبايل (واتساب)</label><input id="ph" inputmode="tel" dir="ltr">
+<input id="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 <p style="margin:18px 0 0"><button class="btn lg wide" id="go">سجّل الطلب</button></p>
+<p class="m" style="margin:10px 0 0">بتسجيل الطلب أنت موافق على <a href="/terms/" style="color:var(--ac)">الشروط</a> و<a href="/privacy/" style="color:var(--ac)">سياسة الخصوصية</a>.</p>
 <p class="err" id="e1"></p><div id="after" class="hide"></div>
 </div></div></section>
 
@@ -213,8 +215,11 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <p style="margin:16px 0 0"><button class="btn" id="login">دخول</button></p><p class="err" id="e2"></p></div>
 <div class="card hide" id="srch" style="margin-top:14px">
 <p class="m" id="me"></p>
-<label for="q">الوظيفة</label><input id="q" placeholder="مثال: محاسب، مهندس موقع، مندوب مبيعات">
+<details id="svd" class="hide"><summary>وظايفي المحفوظة (<span id="svn">0</span>)</summary><div id="svl" style="padding:0 16px 16px"></div></details>
+<label for="q">الوظيفة</label><input id="q" placeholder="مثال: محاسب، مهندس موقع، مندوب مبيعات"><p class="m" style="margin:6px 0 0">للخليج جرّب كمان بالإنجليزي، مثلاً Accountant.</p>
 <label for="c">الدولة</label><select id="c"><option value="eg">مصر</option><option value="sa">السعودية</option><option value="ae">الإمارات</option><option value="kw">الكويت</option><option value="qa">قطر</option><option value="bh">البحرين</option></select>
+<label for="df">تاريخ النشر</label><select id="df"><option value="">أي وقت</option><option value="3days">آخر 3 أيام</option><option value="week">آخر أسبوع</option><option value="month">آخر شهر</option></select>
+<label style="display:flex;gap:10px;align-items:center;margin-top:12px"><input type="checkbox" id="wf" style="width:auto"> وظايف عن بُعد بس</label>
 <p style="margin:16px 0 0"><button class="btn or" id="s">ابحث</button></p><p class="err" id="e3"></p><div id="res"></div></div>
 </div></section>
 
@@ -249,7 +254,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 </main>
 <footer><div class="w"><div class="fg">
 <div><a class="logo" href="/"><svg><use href="#lg"/></svg><span>وظيفتك <i>الجاية</i></span></a><p style="margin:0;max-width:340px">منصة بحث عن وظائف في مصر والخليج، من فريق <a href="https://cvproservice.github.io/cvpro/" style="display:inline;text-decoration:underline">CV Pro Egypt</a>.</p></div>
-<div><h4>الموقع</h4><a href="#how">الخطوات</a><a href="#plans">الباقات</a><a href="#about">من نحن</a><a href="#faq">الأسئلة الشائعة</a><a href="/ats-cv-guide/">دليل سيرة ATS</a><a href="/cv-ats-checker/">فحص السيرة ATS</a><a href="/job-scam-signs/">علامات النصب</a></div>
+<div><h4>الموقع</h4><a href="#how">الخطوات</a><a href="#plans">الباقات</a><a href="#about">من نحن</a><a href="#faq">الأسئلة الشائعة</a><a href="/ats-cv-guide/">دليل سيرة ATS</a><a href="/cv-ats-checker/">فحص السيرة ATS</a><a href="/job-scam-signs/">علامات النصب</a><a href="/privacy/">سياسة الخصوصية</a><a href="/terms/">الشروط والأحكام</a></div>
 <div><h4>تواصل</h4><a href="https://wa.me/201068204700" dir="ltr" style="text-align:right">واتساب: 01068204700</a><a href="https://cvproservice.github.io/cvpro/">محتاج سيرة ذاتية احترافية؟</a></div>
 </div><div class="cr">© وظيفتك الجاية — جميع الحقوق محفوظة</div></div></footer>
 <div class="bar"><a class="btn lg wide" href="#order">اطلب الخدمة الآن</a></div>
@@ -267,7 +272,7 @@ async function api(path,opt={}){const c=localStorage.getItem('wg_code');
  const r=await fetch(API+path,{...opt,headers:{'Content-Type':'application/json',...(c?{Authorization:'Bearer '+c}:{})}});
  const d=await r.json();if(!r.ok)throw new Error(d.error||'حصل خطأ');return d}
 $('go').onclick=async()=>{$('e1').textContent='';
- try{const d=await api('/order',{method:'POST',body:JSON.stringify({name:$('nm').value,phone:$('ph').value,plan})});
+ try{const d=await api('/order',{method:'POST',body:JSON.stringify({name:$('nm').value,phone:$('ph').value,plan,website:$('hp').value})});
   const msg=encodeURIComponent(`طلب رقم ${d.id} — باقة ${PL[plan][0]} (${d.plan.price} ج) على وظيفتك الجاية. هبعت إيصال التحويل.`);
   $('after').className='';$('after').innerHTML=`<p><b>رقم طلبك: ${esc(d.id)}</b><br>حوّل <b>${d.plan.price} ج</b> على <b dir="ltr">01068204700</b> (فودافون كاش أو إنستاباي)، وابعت الإيصال على واتساب، وهيوصلك كود الدخول بعد التأكيد.${plan=='full'?'<br>وبعد التأكيد هنتواصل معاك على واتساب لاستلام بيانات سيرتك وتجهيزها.':''}</p><a class="btn or" href="https://wa.me/${WA}?text=${msg}">ابعت الإيصال على واتساب</a>`;
  }catch(e){$('e1').textContent=e.message}};
@@ -275,8 +280,8 @@ async function enter(){try{const d=await api('/me');$('srch').className='card';$
 $('login').onclick=()=>{$('e2').textContent='';localStorage.setItem('wg_code',$('code').value.trim());enter()};
 if(localStorage.getItem('wg_code'))enter();
 $('s').onclick=async()=>{$('e3').textContent='';const b=$('s');b.disabled=true;b.textContent='جاري البحث...';$('res').innerHTML='<p class="m">بنجمّع الوظايف من مواقع التوظيف، ممكن ياخد حتى 15 ثانية...</p>';
- try{const d=await api('/search?'+new URLSearchParams({q:$('q').value,country:$('c').value}));
-  window.JOBS=d.jobs;$('res').innerHTML=d.jobs.map((j,i)=>`<div class="card job"><b>${esc(j.title)}</b><span class="m">${[j.company,j.city,j.country].filter(Boolean).map(esc).join('، ')}</span><br><a class="btn" style="margin-top:8px" target="_blank" rel="noopener" href="${esc(j.link)}">قدّم الآن</a> <button class="btn ol" style="margin-top:8px" data-cmp="${i}">قارن مع سيرتي</button></div>`).join('')||'<p class="m">مفيش نتايج، جرّب كلمة تانية. ومبتتخصمش من حصتك.</p>';
+ try{const d=await api('/search?'+new URLSearchParams({q:$('q').value,country:$('c').value,date:$('df').value,remote:$('wf').checked?'1':''}));
+  window.JOBS=d.jobs;$('res').innerHTML=d.jobs.map((j,i)=>`<div class="card job"><b>${esc(j.title)}</b><span class="m">${[j.company,j.city,j.country].filter(Boolean).map(esc).join('، ')}</span><br><a class="btn" style="margin-top:8px" target="_blank" rel="noopener" href="${esc(j.link)}">قدّم الآن</a> <button class="btn ol" style="margin-top:8px" data-cmp="${i}">قارن مع سيرتي</button> <button class="btn ol" style="margin-top:8px" data-sv="${i}">احفظ</button></div>`).join('')||'<p class="m">مفيش نتايج، جرّب كلمة تانية. ومبتتخصمش من حصتك.</p>';
   $('me').textContent=`متبقي ${d.left} عملية بحث`}catch(e){$('res').innerHTML='';$('e3').textContent=e.message}
  b.disabled=false;b.textContent='ابحث'};
 
@@ -302,6 +307,14 @@ try{$('cvt').value=sessionStorage.getItem('wg_cv')||''}catch(e){}
 $('cvt').addEventListener('input',()=>{try{sessionStorage.setItem('wg_cv',$('cvt').value)}catch(e){}});
 $('res').addEventListener('click',e=>{const b=e.target.closest('[data-cmp]');if(!b)return;const j=(window.JOBS||[])[b.dataset.cmp];if(!j)return;
  $('jbt').value=(j.title||'')+'\\n'+(j.description||'');$('cmpres').innerHTML='<p class="m">'+($('cvt').value.trim()?'اضغط حلّل التوافق.':'الصق سيرتك في الخانة اللي فوق، وبعدها اضغط حلّل التوافق.')+'</p>';location.hash='compare'});
+const svGet=()=>{try{return JSON.parse(localStorage.getItem('wg_saved')||'[]')}catch(e){return[]}};
+const svSet=a=>{try{localStorage.setItem('wg_saved',JSON.stringify(a.slice(0,100)))}catch(e){}};
+function svDraw(){const a=svGet();$('svn').textContent=a.length;$('svd').className=a.length?'':'hide';
+ $('svl').innerHTML=a.map((x,i)=>`<div class="card job"><b>${esc(x.title)}</b><span class="m">${[x.company,x.city,x.country].filter(Boolean).map(esc).join('، ')}</span><br><a class="btn" style="margin-top:8px" target="_blank" rel="noopener" href="${esc(x.link)}">افتح الوظيفة</a> <label style="display:inline-flex;gap:6px;align-items:center;margin:8px 10px 0"><input type="checkbox" data-ap="${i}" ${x.applied?'checked':''} style="width:auto"> تم التقديم</label> <button class="btn ol" style="margin-top:8px" data-rm="${i}">إزالة</button></div>`).join('')}
+$('res').addEventListener('click',e=>{const b=e.target.closest('[data-sv]');if(!b)return;const j=(window.JOBS||[])[b.dataset.sv];if(!j||!j.link)return;const a=svGet();if(!a.some(x=>x.link===j.link)){a.unshift({title:j.title,company:j.company,city:j.city,country:j.country,link:j.link,applied:false});svSet(a);svDraw()}b.textContent='تم الحفظ ✔';b.disabled=true});
+$('svl').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;const a=svGet();a.splice(+b.dataset.rm,1);svSet(a);svDraw()});
+$('svl').addEventListener('change',e=>{const c=e.target.closest('[data-ap]');if(!c)return;const a=svGet();if(a[+c.dataset.ap]){a[+c.dataset.ap].applied=c.checked;svSet(a)}});
+svDraw();
 $('hgo').onclick=()=>{const q=$('hq').value.trim(),c=$('hc').value;$('hmsg').textContent='';
  if(!q){$('hmsg').textContent='اكتب الوظيفة اللي بتدور عليها.';return}
  if(localStorage.getItem('wg_code')&&!$('srch').classList.contains('hide')){$('q').value=q;$('c').value=c;location.hash='access';setTimeout(()=>$('s').click(),450);return}
