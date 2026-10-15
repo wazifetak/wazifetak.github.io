@@ -40,7 +40,7 @@
 {"@type":"Question","name":"الاشتراك لمدة قد إيه؟","acceptedAnswer":{"@type":"Answer","text":"30 يوم من تفعيل الكود."}}]}]}</script>
 <style>
 :root{color-scheme:light;--ink:#0C1A33;--ink2:#43506B;--mut:#6B7790;--bg:#fff;--sf:#F4F7FC;--card:#fff;--ln:#DDE4F0;--ac:#2B3A8F;--ac2:#1E2A6B;--ok:#138A5B;--r1:10px;--r2:16px;--r3:24px;--sh2:0 28px 60px -28px rgba(12,26,51,.4);padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:78px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:78px;overflow-x:hidden}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.9 'Readex Pro',Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}.w{max-width:1100px;margin:auto;padding:0 20px}
 h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em}h2{font-size:clamp(25px,3.4vw,34px);line-height:1.4}h3{font-size:17px;line-height:1.5}
@@ -117,6 +117,7 @@ footer{background:var(--ink);color:#B7C3DB;padding:52px 0 28px;margin-top:80px;f
 .fg .logo{color:#fff;margin-bottom:10px}.fg .logo i{color:#AAB4F0}.cr{margin-top:34px;padding-top:20px;border-top:1px solid #243452;font-size:13px}
 .bar{display:none}
 .rel{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:28px 0 0}.rel a{display:block;border:1px solid var(--ln);border-radius:var(--r2);padding:16px 18px;text-decoration:none;background:#fff}.rel a:hover{border-color:var(--ac)}.rel b{display:block}.rel span{font-size:14px;color:var(--ink2)}
+.hpx{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;clip-path:inset(50%);pointer-events:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media(max-width:860px){
 section{padding:56px 0}.nv{display:none}.hero{padding:36px 0 60px}.hg,.of,.cp,.fg,.fs{grid-template-columns:1fr;gap:32px}
@@ -203,7 +204,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <div class="card">
 <label for="nm">الاسم</label><input id="nm" autocomplete="name">
 <label for="ph">رقم الموبايل (واتساب)</label><input id="ph" inputmode="tel" dir="ltr">
-<input id="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<input id="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hpx">
 <p style="margin:18px 0 0"><button class="btn lg wide" id="go">سجّل الطلب</button></p>
 <p class="m" style="margin:10px 0 0">بتسجيل الطلب أنت موافق على <a href="/terms/" style="color:var(--ac)">الشروط</a> و<a href="/privacy/" style="color:var(--ac)">سياسة الخصوصية</a>.</p>
 <p class="err" id="e1"></p><div id="after" class="hide"></div>
