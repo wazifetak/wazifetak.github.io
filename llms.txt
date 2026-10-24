@@ -7,6 +7,9 @@
 - [فحص السيرة ATS](https://wazifetak.github.io/cv-ats-checker/): أداة مجانية تقارن السيرة بإعلان الوظيفة داخل المتصفح
 - [دليل سيرة ATS](https://wazifetak.github.io/ats-cv-guide/): كيف تكتب سيرة سهلة القراءة لأنظمة ATS
 - [علامات إعلانات النصب](https://wazifetak.github.io/job-scam-signs/): علامات تحذير وخطوات تحقق قبل التقديم
+- [وظائف حسب الدولة](https://wazifetak.github.io/jobs/): مصر والسعودية والإمارات والكويت وقطر والبحرين وعُمان
+- [وظائف الخليج](https://wazifetak.github.io/jobs/gulf/): السعودية والإمارات والكويت وقطر والبحرين وعُمان (تجريبي)
+- صفحات الدول: /jobs/saudi-arabia/ و/jobs/uae/ و/jobs/kuwait/ و/jobs/qatar/ و/jobs/bahrain/ و/jobs/oman/ و/jobs/egypt/
 
 ## الباقات (30 يوم)
 - أساسي: 349 جنيه مصري، 10 عمليات بحث شهرياً
