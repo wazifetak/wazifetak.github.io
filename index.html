@@ -134,7 +134,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#2b3a8f"/><path d="M16 44l12-12 8 8 14-16" stroke="#f28c28" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 24h10v10" stroke="#f28c28" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
 <header><div class="w"><nav>
 <a class="logo" href="/" aria-label="وظيفتك الجاية"><svg><use href="#lg"/></svg><span>وظيفتك <i>الجاية</i></span></a>
-<div class="nv"><a href="#how">الخطوات</a><a href="#plans">الباقات</a><a href="#compare">قارن سيرتك</a><a href="#guides">الأدلة</a><a href="#about">من نحن</a><a href="#faq">الأسئلة</a></div>
+<div class="nv"><a href="#how">الخطوات</a><a href="#plans">الباقات</a><a href="#compare">قارن سيرتك</a><a href="/jobs/">الدول</a><a href="#guides">الأدلة</a><a href="#about">من نحن</a><a href="#faq">الأسئلة</a></div>
 <a class="btn" href="#order">اطلب الخدمة</a></nav></div></header>
 <main>
 <section class="hero"><div class="w hg">
@@ -142,7 +142,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <h1>ابحث عن وظيفتك الجاية في مصر والخليج</h1>
 <p class="lead">بنجمّع الوظايف من مواقع التوظيف في مكان واحد، ونقارن سيرتك بكل وظيفة، وتقدّم مباشرة على صفحة الشركة.</p>
 <div class="hs" role="search"><div class="f"><label for="hq">الوظيفة</label><input id="hq" placeholder="محاسب، مهندس موقع، مبيعات" autocomplete="off"></div>
-<div class="f"><label for="hc">الدولة</label><select id="hc"><option value="eg">مصر</option><option value="sa">السعودية</option><option value="ae">الإمارات</option><option value="kw">الكويت</option><option value="qa">قطر</option><option value="bh">البحرين</option></select></div>
+<div class="f"><label for="hc">الدولة</label><select id="hc"><option value="eg">مصر</option><option value="sa">السعودية</option><option value="ae">الإمارات</option><option value="kw">الكويت</option><option value="qa">قطر</option><option value="bh">البحرين</option><option value="om">عُمان (تجريبي)</option></select></div>
 <button class="btn lg" id="hgo">ابحث</button></div>
 <p class="m" style="margin:10px 0 0">البحث متاح للمشتركين فقط. اختار باقتك وهنكمّل بحثك بعد التفعيل.</p>
 <p class="err" id="hmsg"></p>
@@ -218,7 +218,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <p class="m" id="me"></p>
 <details id="svd" class="hide"><summary>وظايفي المحفوظة (<span id="svn">0</span>)</summary><div id="svl" style="padding:0 16px 16px"></div></details>
 <label for="q">الوظيفة</label><input id="q" placeholder="مثال: محاسب، مهندس موقع، مندوب مبيعات"><p class="m" style="margin:6px 0 0">للخليج جرّب كمان بالإنجليزي، مثلاً Accountant.</p>
-<label for="c">الدولة</label><select id="c"><option value="eg">مصر</option><option value="sa">السعودية</option><option value="ae">الإمارات</option><option value="kw">الكويت</option><option value="qa">قطر</option><option value="bh">البحرين</option></select>
+<label for="c">الدولة</label><select id="c"><option value="eg">مصر</option><option value="sa">السعودية</option><option value="ae">الإمارات</option><option value="kw">الكويت</option><option value="qa">قطر</option><option value="bh">البحرين</option><option value="om">عُمان (تجريبي)</option></select>
 <label for="df">تاريخ النشر</label><select id="df"><option value="">أي وقت</option><option value="3days">آخر 3 أيام</option><option value="week">آخر أسبوع</option><option value="month">آخر شهر</option></select>
 <label style="display:flex;gap:10px;align-items:center;margin-top:12px"><input type="checkbox" id="wf" style="width:auto"> وظايف عن بُعد بس</label>
 <p style="margin:16px 0 0"><button class="btn or" id="s">ابحث</button></p><p class="err" id="e3"></p><div id="res"></div></div>
@@ -239,6 +239,9 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 <div class="card n"><h3>اللي مش بنقدمه</h3><ul><li>ضمان وظيفة أو مقابلة</li><li>التقديم بدالك على الوظايف</li><li>تجديد تلقائي من غير موافقتك</li></ul></div></div>
 </div></section>
 
+<section id="countries"><div class="w"><h2>ابحث حسب الدولة</h2><p class="sub">معلومات عن سوق العمل ونصائح للسيرة والتحقق من الإعلانات في كل دولة.</p>
+<div class="rel"><a href="/jobs/gulf/"><b>وظائف الخليج</b><span>6 دول خليجية في صفحة واحدة</span></a><a href="/jobs/egypt/"><b>وظائف مصر</b><span>القاهرة والجيزة والإسكندرية</span></a><a href="/jobs/saudi-arabia/"><b>وظائف السعودية</b><span>الرياض وجدة والدمام</span></a><a href="/jobs/uae/"><b>وظائف الإمارات</b><span>دبي وأبوظبي والشارقة</span></a><a href="/jobs/kuwait/"><b>وظائف الكويت</b><span>مدينة الكويت وحولي</span></a><a href="/jobs/qatar/"><b>وظائف قطر</b><span>الدوحة والريان</span></a><a href="/jobs/bahrain/"><b>وظائف البحرين</b><span>المنامة والمحرق</span></a><a href="/jobs/oman/"><b>وظائف عُمان</b><span>مسقط وصلالة (تجريبي)</span></a></div></div></section>
+
 <section id="guides" style="background:var(--sf);border-block:1px solid var(--ln)"><div class="w"><h2>أدلة تساعدك قبل ما تقدّم</h2><p class="sub">معلومات عملية عن كتابة السيرة والتحقق من الإعلانات.</p>
 <div class="rel"><a href="/ats-cv-guide/"><b>كيف تكتب سيرة متوافقة مع ATS</b><span>التنسيق والكلمات المفتاحية وأخطاء شائعة</span></a><a href="/cv-ats-checker/"><b>فحص السيرة ATS مجاناً</b><span>قارن سيرتك بإعلان الوظيفة</span></a><a href="/job-scam-signs/"><b>علامات إعلانات النصب</b><span>اتأكد من الشركة قبل ما تبعت بياناتك</span></a></div></div></section>
 
@@ -255,7 +258,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 </main>
 <footer><div class="w"><div class="fg">
 <div><a class="logo" href="/"><svg><use href="#lg"/></svg><span>وظيفتك <i>الجاية</i></span></a><p style="margin:0;max-width:340px">منصة بحث عن وظائف في مصر والخليج، من فريق <a href="https://cvproservice.github.io/cvpro/" style="display:inline;text-decoration:underline">CV Pro Egypt</a>.</p></div>
-<div><h4>الموقع</h4><a href="#how">الخطوات</a><a href="#plans">الباقات</a><a href="#about">من نحن</a><a href="#faq">الأسئلة الشائعة</a><a href="/ats-cv-guide/">دليل سيرة ATS</a><a href="/cv-ats-checker/">فحص السيرة ATS</a><a href="/job-scam-signs/">علامات النصب</a><a href="/privacy/">سياسة الخصوصية</a><a href="/terms/">الشروط والأحكام</a></div>
+<div><h4>الموقع</h4><a href="#how">الخطوات</a><a href="#plans">الباقات</a><a href="#about">من نحن</a><a href="#faq">الأسئلة الشائعة</a><a href="/ats-cv-guide/">دليل سيرة ATS</a><a href="/cv-ats-checker/">فحص السيرة ATS</a><a href="/job-scam-signs/">علامات النصب</a><a href="/jobs/">وظائف حسب الدولة</a><a href="/jobs/gulf/">وظائف الخليج</a><a href="/privacy/">سياسة الخصوصية</a><a href="/terms/">الشروط والأحكام</a></div>
 <div><h4>تواصل</h4><a href="https://wa.me/201068204700" dir="ltr" style="text-align:right">واتساب: 01068204700</a><a href="https://cvproservice.github.io/cvpro/">محتاج سيرة ذاتية احترافية؟</a></div>
 </div><div class="cr">© وظيفتك الجاية — جميع الحقوق محفوظة</div></div></footer>
 <div class="bar"><a class="btn lg wide" href="#order">اطلب الخدمة الآن</a></div>
@@ -323,5 +326,6 @@ $('hgo').onclick=()=>{const q=$('hq').value.trim(),c=$('hc').value;$('hmsg').tex
  $('hmsg').textContent='البحث للمشتركين. اختار باقتك، وبعد التفعيل بنكمّل بحثك.';location.hash='plans'};
 $('hq').addEventListener('keydown',e=>{if(e.key==='Enter')$('hgo').click()});
 document.querySelector('.pop').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(b){$('hq').value=b.dataset.q;$('hq').focus()}});
+try{const sp=new URLSearchParams(location.search),cc=sp.get('c'),qq=sp.get('q');if(cc&&[...$('hc').options].some(o=>o.value===cc)){$('hc').value=cc;$('c').value=cc}if(qq)$('hq').value=qq.slice(0,80)}catch(e){}
 </script>
 </body></html>
